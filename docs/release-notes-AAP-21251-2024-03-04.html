@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Red Hat Ansible Automation Platform Release Notes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article Role ARG Spec">
+<div id="header">
+<h1>Red Hat Ansible Automation Platform Release Notes</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="making-open-source-more-inclusive">Making open source more inclusive</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Red Hat is committed to replacing problematic language in our code, documentation, and web properties.
+We are beginning with these four terms: master, slave, blacklist, and whitelist.
+Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases.
+For more details, see <a href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright&#8217;s message</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="providing-feedback">Providing feedback on Red Hat documentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have a suggestion to improve this documentation, or find an error, please contact technical support at <a href="https://access.redhat.com">https://access.redhat.com</a> to create an issue on the Ansible Automation Platform Jira project using the <strong>docs-product</strong> component.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="platform-introduction">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Red Hat Ansible Automation Platform simplifies the development and operation of automation workloads for managing enterprise application infrastructure lifecycles. It works across multiple IT domains including operations, networking, security, and development, as well as across diverse hybrid environments. Simple to adopt, use, and understand, Red Hat Ansible Automation Platform provides the tools needed to rapidly implement enterprise-wide automation, no matter where you are in your automation journey.</p>
+</div>
+<div class="sect2">
+<h3 id="whats-included">What&#8217;s included in Ansible Automation Platform</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Ansible Automation Platform</th>
+<th class="tableblock halign-left valign-top">Automation controller</th>
+<th class="tableblock halign-left valign-top">Automation hub</th>
+<th class="tableblock halign-left valign-top">Event-Driven Ansible controller</th>
+<th class="tableblock halign-left valign-top">Insights for Ansible Automation Platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>2.4</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>4.4</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>4.7</p>
+</li>
+<li>
+<p>hosted service</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1.0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>hosted service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_red_hat_ansible_automation_platform_life_cycle">Red Hat Ansible Automation Platform life cycle</h3>
+<div class="paragraph">
+<p>Red Hat publishes a product life cycle page that identifies the levels of maintenance for each Ansible Automation Platform release.
+Refer to <a href="https://access.redhat.com/support/policy/updates/ansible-automation-platform">Red Hat Ansible Automation Platform Life Cycle</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_upgrading_ansible_automation_platform">Upgrading Ansible Automation Platform</h3>
+<div class="paragraph">
+<p>Use the installer to perform upgrades to maintenance versions of Ansible Automation Platform. The installer performs all necessary actions required to upgrade to the latest versions of Ansible Automation Platform, including automation controller and private automation hub.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not use <code>yum update</code> to run upgrades. Use the installer instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>Refer to the table in <a href="#whats-included">What&#8217;s included in Ansible Automation Platform</a> for information on maintenance releases of Ansible Automation Platform.</p>
+</li>
+<li>
+<p>For more information on upgrading your Ansible Automation Platform, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_upgrade_and_migration_guide/index">Red Hat Ansible Automation Platform Upgrade and Migration Guide</a>.</p>
+</li>
+<li>
+<p>For procedures related to using the Ansible Automation Platform installer, see the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/index">Ansible Automation Platform Installation Guide</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ansible_automation_platform_2_4">Ansible Automation Platform 2.4</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Red Hat Ansible Automation Platform simplifies the development and operation of automation workloads for managing enterprise application infrastructure lifecycles. It works across many IT domains including operations, networking, security, development, and across diverse hybrid environments. Simple to adopt, use, and understand, Red Hat Ansible Automation Platform provides the tools needed to rapidly implement enterprise-wide automation, no matter where you are in your automation journey.</p>
+</div>
+<div class="sect2">
+<h3 id="_new_features_and_enhancements">New features and enhancements</h3>
+<div class="paragraph">
+<p>This release of Ansible Automation Platform features the following enhancements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Before this update, the execution environment container images were based on RHEL 8 only. With Ansible Automation Platform 2.4 onwards, the execution environment container images are now also available on RHEL 9.
+The execution environment includes the following container images:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ansible-python-base</p>
+</li>
+<li>
+<p>ansible-python-toolkit</p>
+</li>
+<li>
+<p>ansible-builder</p>
+</li>
+<li>
+<p>ee-minimal</p>
+</li>
+<li>
+<p>ee-supported</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The ansible-builder project recently released Ansible Builder version 3, a much-improved and simplified approach to creating execution environments.
+You can use the following configuration YAML keys with Ansible Builder version 3:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>additional_build_files</p>
+</li>
+<li>
+<p>additional_build_steps</p>
+</li>
+<li>
+<p>build_arg_defaults</p>
+</li>
+<li>
+<p>dependencies</p>
+</li>
+<li>
+<p>images</p>
+</li>
+<li>
+<p>options</p>
+</li>
+<li>
+<p>version</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more information about using Ansible Builder version 3, see
+<a href="https://ansible.readthedocs.io/projects/builder/en/stable/">Ansible Builder Documentation</a> and <a href="https://docs.ansible.com/automation-controller/latest/html/userguide/ee_reference.html">Execution Environment Setup Reference</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ansible Automation Platform 2.4 and later versions can now be run on ARM platforms, including both the control plane and the execution environments.</p>
+</li>
+<li>
+<p>Added an option to configure the SSO logout URL for automation hub if you need to change it from the default value.</p>
+</li>
+<li>
+<p>Updated the ansible-lint RPM package to version 6.14.3.</p>
+</li>
+<li>
+<p>Updated Django for potential denial-of-service vulnerability in file uploads (CVE-2023-24580).</p>
+</li>
+<li>
+<p>Updated sqlparse for ReDOS vulnerability (CVE-2023-30608).</p>
+</li>
+<li>
+<p>Updated Django for potential denial-of-service in Accept-Language headers (CVE-2023-23969).</p>
+</li>
+<li>
+<p>Ansible Automation Platform 2.4 adds the ability to install automation controller, automation hub, and Event-Driven Ansible on IBM Power (ppc64le), IBM Z (s390x), and IBM® LinuxONE (s390x) architectures.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deprecated_and_removed_features">Deprecated and removed features</h3>
+<div class="paragraph">
+<p>Some features available in earlier releases have been deprecated or removed. Deprecated functionality is still included in Ansible Automation Platform and continues to be supported. However, it will be removed in a future release of this product and is not recommended for new deployments.</p>
+</div>
+<div class="paragraph">
+<p>The following is a list of major functionality deprecated and removed within Ansible Automation Platform 2.4:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>On-premise component automation services catalog is now removed from Ansible Automation Platform 2.4 onwards.</p>
+</li>
+<li>
+<p>With the Ansible Automation Platform 2.4 release, the execution environment container image for Ansible 2.9 (<strong>ee-29-rhel-8</strong>) is no longer loaded into the Automation Controller configuration by default.</p>
+</li>
+<li>
+<p>Although you can still synchronize content, the use of synclists is deprecated and will be removed in a later release. Instead, private automation hub administrators can upload manually-created requirements files from the <code>rh-certified</code> remote.</p>
+</li>
+<li>
+<p>You can now configure the Controller Access Token for each resource with the <code>connection_secret</code> parameter, rather than the old <code>tower_auth_secret</code> parameter. This change is compatible with earlier versions, but the <code>tower_auth_secret</code> parameter is now deprecated and will be removed in a future release.</p>
+</li>
+<li>
+<p>Smart inventories have been deprecated in favor of constructed inventories and will be removed in a future release.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bug_fixes">Bug fixes</h3>
+<div class="paragraph">
+<p>The following bugs were fixed in this release of Ansible Automation Platform:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The installer now ensures that collection auto signing cannot be enabled without enabling the collection signing service.</p>
+</li>
+<li>
+<p>Fixed an issue with restoring backups when the installed automation controller version is different from the backup version.</p>
+</li>
+<li>
+<p>Fixed an issue with not adding user defined galaxy-importer settings to <code>galaxy-importer.cfg</code> file.</p>
+</li>
+<li>
+<p>Added missing <code>X-Forwarded-For</code> header information to nginx logs.</p>
+</li>
+<li>
+<p>Removed unnecessary receptor peer name validation when IP address is used as the name.</p>
+</li>
+<li>
+<p>Updated the <code>outdated base_packages.txt</code> file that is included in the bundle installer.</p>
+</li>
+<li>
+<p>Fixed an issue where upgrading the Ansible Automation Platform did not update the nginx package by default.</p>
+</li>
+<li>
+<p>Fixed an issue where an <strong>awx</strong> user was created without creating an <strong>awx</strong> group on execution nodes.</p>
+</li>
+<li>
+<p>Fixed the assignment of package version variable to work with flat file inventories.</p>
+</li>
+<li>
+<p>Added a FQDN check for the automation hub hostname required to run the Skopeo commands.</p>
+</li>
+<li>
+<p>Fixed an issue such that the front end URL for Red Hat Single Sign On (SSO) is now properly configured after you specify the <code>sso_redirect_host</code> variable.</p>
+</li>
+<li>
+<p>Fixed the variable precedence for all component <code>nginx_tls_files_remote</code> variables.</p>
+</li>
+<li>
+<p>Fixed the <strong>setup.sh</strong> script to escalate privileges if necessary for installing Ansible Automation Platform.</p>
+</li>
+<li>
+<p>Fixed an issue when restoring a backup to an automation hub with a different hostname.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_technology_preview">Technology Preview</h3>
+<div class="paragraph">
+<p>Some features in this release are currently classified as Technology Preview. Technology Preview features offer early access to upcoming product features, enabling customers to test functionality and give feedback during the development process. Note that Red Hat does not recommend using Technology Preview features for production, and Red Hat SLAs do not support Technology Preview functions.</p>
+</div>
+<div class="paragraph">
+<p>The following are Technology Preview features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Starting with Ansible Automation Platform 2.4, the Platform Resource Operator can be used to create the following resources in automation controller by applying YAML to your OpenShift cluster:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Inventories</p>
+</li>
+<li>
+<p>Projects</p>
+</li>
+<li>
+<p>Instance Groups</p>
+</li>
+<li>
+<p>Credentials</p>
+</li>
+<li>
+<p>Schedules</p>
+</li>
+<li>
+<p>Workflow Job Templates</p>
+</li>
+<li>
+<p>Launch Workflows</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>One notable change is that you can now configure the Controller Access Token for each resource with the <code>connection_secret</code> parameter, rather than the old <code>tower_auth_secret</code> parameter. This change is compatible with earlier versions, but the <code>tower_auth_secret</code> parameter is now deprecated and will be removed in a future release.</p>
+</div>
+<div class="ulist _additional-resources">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>For the most recent list of Technology Preview features, see <a href="https://access.redhat.com/articles/ansible-automation-platform-preview-features">Ansible Automation Platform - Preview Features</a>.</p>
+</li>
+<li>
+<p>For more information about support for Technology Preview features, see <a href="https://access.redhat.com/support/offerings/techpreview">Red Hat Technology Preview Features Support Scope</a>.</p>
+</li>
+<li>
+<p>For information regarding execution node enhancements on OpenShift deployments, see <a href="https://docs.ansible.com/automation-controller/latest/html/administration/instances.html">Managing Capacity With Instances</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="controller-440-intro">Automation controller</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automation controller provides a standardized way to define, operate and delegate automation across the enterprise. It also introduces new, exciting technologies and an enhanced architecture that enables automation teams to scale and deliver automation rapidly to meet ever-growing business demand.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="https://docs.ansible.com/automation-controller/latest/html/release-notes/relnotes.html#release-notes-for-4-x">Automation Controller Release Notes for 4.x</a> for a full list of new features and enhancements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="eda-24-intro">Event-Driven Ansible</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Event-Driven Ansible is the newest capability of Ansible Automation Platform that is designed to enable automated response with user-defined, rules-based workflows. Event-Driven Ansible works by receiving events from third party tools, deciding on the actions to take, and acting automatically.</p>
+</div>
+<div class="paragraph">
+<p>Event-Driven Ansible is included in Ansible Automation Platform, making the platform even more capable as a single enterprise automation solution. Using Event-Driven Ansible, domain experts can easily create end-to-end fully automated Ops As Code scenarios for a broad array of use cases across the IT landscape. By eliminating high-volume routine tasks and automatically responding to changing conditions, teams are free to innovate more efficiently, and act consistently and accurately at scale.</p>
+</div>
+<div class="ulist">
+<div class="title">Known issues</div>
+<ul>
+<li>
+<p>Both contributor and editor roles cannot set the AWX token. The AWX token can be set by users with administrator roles only.</p>
+</li>
+<li>
+<p>Activation-job pods do not have request limits.</p>
+</li>
+<li>
+<p>The onboarding wizard does not request a controller token creation.</p>
+</li>
+<li>
+<p>Users cannot filter through a list of tokens under the <strong>Controller Token</strong> tab.</p>
+</li>
+<li>
+<p>Only the users with administrator rights can set or modify their passwords.</p>
+</li>
+<li>
+<p>If there is a failure, an activation with restart policy set to <code>Always</code> is unable to restart the failed activation.</p>
+</li>
+<li>
+<p>Disabling and enabling an activation causes the restart count to increase by one count. This behavior results in an incorrect <code>restart</code> count.</p>
+</li>
+<li>
+<p>Podman pods must be executed with memory limits.</p>
+</li>
+<li>
+<p>Users can add multiple tokens even when only the first AWX token is used.</p>
+</li>
+<li>
+<p>A race condition occurs when creating and rapidly deleting an activation causes multiple errors.</p>
+</li>
+<li>
+<p>When users filter any list, only the items that are on the list get filtered.</p>
+</li>
+<li>
+<p>When ongoing activations start multiple jobs, a few jobs are not recorded in the audit logs.</p>
+</li>
+<li>
+<p>When a job template fails, a few key attributes are missing in the event payload.</p>
+</li>
+<li>
+<p>Restart policy in a Kubernetes deployment does not restart successful activations that are marked as failed.</p>
+</li>
+<li>
+<p>An incorrect status is reported for activations that are disabled or enabled.</p>
+</li>
+<li>
+<p>If the <code>run_job_template</code> action fails, the rule is not counted as executed.</p>
+</li>
+<li>
+<p>RHEL 9.2 activations cannot connect to the host.</p>
+</li>
+<li>
+<p>Restarting the Event-Driven Ansible server can cause activation states to become stale.</p>
+</li>
+<li>
+<p>Bulk deletion of rulebook activation lists is not consistent, and the deletion can be either successful or unsuccessful.</p>
+</li>
+<li>
+<p>When users access the detail screen of a rule audit, the related rulebook activation link is broken.</p>
+</li>
+<li>
+<p>Long running activations with loads of events can cause an out of disk space issue. Resolved in <a href="#installer-24-6">installer release 2.4-6</a>.</p>
+</li>
+<li>
+<p>Certain characters, such as hyphen (-), forward slash (/), and period (.), are not supported in the event keys. Resolved in <a href="#installer-24-3">installer release 2.4-3</a>.</p>
+</li>
+<li>
+<p>When there are more activations than available workers, disabling the activations incorrectly shows them in running state. Resolved in <a href="#installer-24-3">installer release 2.4-3</a>.</p>
+</li>
+<li>
+<p>Event-Driven Ansible activation pods are running out of memory on RHEL 9. Resolved in <a href="#installer-24-3">installer release 2.4-3</a>.</p>
+</li>
+<li>
+<p>When all workers are busy with activation processes, other asynchronous tasks are not executed, such as importing projects. Resolved in <a href="#installer-24-3">installer release 2.4-3</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hub-464-intro">Automation hub</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automation hub allows you to discover and use new certified automation content from Red Hat Ansible and Certified Partners. On Ansible automation hub, you can discover and manage Ansible Collections, which is supported automation content developed by both partners and Red Hat for use cases such as cloud automation, network automation, security automation, and more.</p>
+</div>
+<div class="ulist">
+<div class="title">New features and enhancements</div>
+<ul>
+<li>
+<p>This release of automation hub provides repository management functionality. With repository management, you can create, edit, delete, and move content between repositories.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Bug fixes</div>
+<ul>
+<li>
+<p>Fixed an issue in the collection keyword search which was returning an incorrect number of results.</p>
+</li>
+<li>
+<p>Added the ability to set <strong>OPT_REFERRALS</strong> option for LDAP, so that users can now successfully log in to the automation hub by using their LDAP credentials.</p>
+</li>
+<li>
+<p>Fixed an error on the UI when <strong>redhat.openshift</strong> collection&#8217;s core dependency was throwing a <code>404 Not Found</code> error.</p>
+</li>
+<li>
+<p>Fixed an error such that the deprecated execution environments are now skipped while syncing with <code>registry.redhat.io</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="operator-240-intro">Automation Platform Operator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ansible Automation Platform Operator provides cloud-native, push-button deployment of new Ansible Automation Platform instances in your OpenShift environment.</p>
+</div>
+<div class="ulist">
+<div class="title">Bug fixes</div>
+<ul>
+<li>
+<p>Enabled configuration of resource requirements for automation controller <code>init</code> containers.</p>
+</li>
+<li>
+<p>Added <strong>securityContext</strong> for Event-Driven Ansible Operator deployments to be Pod Security Admission compliant.</p>
+</li>
+<li>
+<p>Resolved error <code>Controller: Error 413 Entity too large</code> when doing bulk updates.</p>
+</li>
+<li>
+<p>Ansible token is now obfuscated in YAML job details.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="docs-2.4-intro">Ansible Automation Platform Documentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The documentation set for Red Hat Ansible Automation Platform 2.4 has had significant updates to improve the experience for our customers and the Ansible community.</p>
+</div>
+<div class="ulist">
+<div class="title">New features and enhancements</div>
+<ul>
+<li>
+<p>With the removal of the on-premise component automation services catalog from Ansible Automation Platform 2.4 onwards, all automation services catalog documentation is removed from the Ansible Automation Platform 2.4 documentation.</p>
+</li>
+<li>
+<p>The following documents are created to help you install and use Event-Driven Ansible, the newest capability of Ansible Automation Platform:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/getting_started_with_event-driven_ansible_guide/index">Getting Started with Event-Driven Ansible</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/event-driven_ansible_controller_user_guide/index">Event Driven Ansible User Guide</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, sections of the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_planning_guide/index">Ansible Automation Platform Planning Guide</a>
+and the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/index">Ansible Automation Platform Installation Guide</a> are updated to include instructions for planning and installing Event-Driven Ansible.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The automation hub documentation has had significant reorganization to combine the content spread across 9 separate documents into the following documents:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>Getting started with automation hub</em></dt>
+<dd>
+<p>Use this guide to perform the initial steps required to use Red Hat automation hub as the default source for Ansible collections content.</p>
+</dd>
+<dt class="hdlist1"><em>Managing content in automation hub</em></dt>
+<dd>
+<p>Use this guide to understand how to create and manage collections, content and repositories in automation hub.</p>
+</dd>
+<dt class="hdlist1"><em>Red Hat Ansible Automation Platform Installation Guide</em></dt>
+<dd>
+<p>Use this guide to learn how to install Ansible Automation Platform based on supported installation scenarios.</p>
+</dd>
+</dl>
+</div>
+</li>
+<li>
+<p>The <em>Managing Red Hat Certified and Ansible Galaxy collections in automation hub guide</em> has been moved to the <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html-single/managing_content_in_automation_hub/index#managing-cert-valid-content"><em>Red Hat Certified, validated, and Ansible Galaxy content in automation hub</em></a> topic in the <em>Managing content in automation hub</em> guide.</p>
+</li>
+<li>
+<p>The Ansible Automation Platform 2.4 Release Notes are restructured to improve the experience for our customers and the Ansible Community. Users can now view the latest updates based on the Ansible Automation Platform versions, instead of their release timeline.</p>
+</li>
+<li>
+<p>The topic <a href="https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html-single/managing_content_in_automation_hub/index#repo-management">Repository management with automation hub</a> is created to help you create and manage custom repositories in automation hub. This topic is found in the <em>Managing content in automation hub</em> guide.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asynchronous_updates">Asynchronous updates</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_installer_releases">Installer releases</h3>
+<div class="sect3">
+<h4 id="installer-24-6">RHSA-2024:1057 - installer release 2.4-6 - March 01, 2024</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHSA-2024:1057">RHSA-2024:1057</a></p>
+</div>
+<div class="sect4">
+<h5 id="_automation_hub">Automation hub</h5>
+<div class="ulist">
+<div class="title">New features and enhancements</div>
+<ul>
+<li>
+<p>Display the download count for each collection in automation hub (AAP-18298)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_event_driven_ansible">Event-Driven Ansible</h5>
+<div class="ulist">
+<div class="title">New features and enhancements</div>
+<ul>
+<li>
+<p>Added a parameter to control the number of running activations per Event-Driven Ansible worker service (AAP-20672)</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Bug fixes</div>
+<ul>
+<li>
+<p>Added <code>EDA_CSRF_TRUSTED_ORIGINS</code> which can be set by user input or defined based on the allowed hostnames that are determined by the installer (AAP-20244)</p>
+</li>
+<li>
+<p>Event-Driven Ansible installation now fails when the pre-existing automation controller version is 4.4.0 or older (AAP-20241)</p>
+</li>
+<li>
+<p>Added the <code>podman_containers_conf_logs_max_size</code> variable for containers.conf to control the max log size for Podman installations. The default value is 10 MiB (AAP-19775)</p>
+</li>
+<li>
+<p>Setting the Event-Driven Ansible debug flag to false now correctly disables Django debug mode (AAP-19577)</p>
+</li>
+<li>
+<p><code>XDG_RUNTIME_DIR</code> is now defined when applying Event-Driven Ansible linger settings for Podman (AAP-19265)</p>
+</li>
+<li>
+<p>Fixed the Event-Driven Ansible nginx config when using a custom https port (AAP-19137)</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Developer Preview</div>
+<ul>
+<li>
+<p>Some features in this release are classified as Developer Preview, including LDAP authentication functionality for Event-Driven Ansible. For more information about these Event-Driven Ansible Developer Preview features, see <a href="https://access.redhat.com/articles/7057663">Event-Driven Ansible - Developer Preview</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="installer-24-5">RHSA-2024:0733 - installer release 2.4-5 - February 07, 2024</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHSA-2024:0733">RHSA-2024:0733</a></p>
+</div>
+<div class="sect4">
+<h5 id="_automation_controller">Automation controller</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an error that caused <code>rsyslogd</code> to stop sending events to Splunk HTTP Collector (AAP-19069)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_automation_hub_2">Automation hub</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Automation hub now uses system crypto-policies in nginx (AAP-18974)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_event_driven_ansible_2">Event-Driven Ansible</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an error that caused a manual installation failure when pinning Event-Driven Ansible to an older version (AAP-19399)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_related_rpm_and_container_releases_for_bundle_installer">Related RPM and container releases for bundle installer</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/errata/RHSA-2024:0322">RHSA-2024:0322</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:7863">RHBA-2023:7863</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="installer-24-4">RHBA-2024:0104 - installer release 2.4-4 - January 11, 2024</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2024:0104">RHBA-2024:0104</a></p>
+</div>
+<div class="sect4">
+<h5 id="_general">General</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed conditional code statements to align with changes from ansible-core issue #82295 (AAP-19099)</p>
+</li>
+<li>
+<p>Fixed an issue which caused the 'update-ca-trust' handler to be skipped for execution nodes in controller (AAP-18911)</p>
+</li>
+<li>
+<p>Improved the error pages for automation controller (AAP-18840)</p>
+</li>
+<li>
+<p>Implemented 'libffi' fix to avoid 'uWSGI' core dumps on failed import (AAP-18196)</p>
+</li>
+<li>
+<p>Fixed an issue with checking the license type following an upgrade caused by earlier incomplete upgrade (AAP-17615)</p>
+</li>
+<li>
+<p>Postgres certificates are now temporarily copied when checking the Postgres version for SSL mode 'verify-full' (AAP-15374)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_related_rpm_and_container_releases_for_bundle_installer_2">Related RPM and container releases for bundle installer</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/errata/RHSA-2023:7773">RHSA-2023:7773</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:7728">RHBA-2023:7728</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:7863">RHBA-2023:7863</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="installer-24-3">RHBA-2023:7460 - installer release 2.4-3 - November 21, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:7460">RHBA-2023:7460</a></p>
+</div>
+<div class="sect4">
+<h5 id="_general_2">General</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an error which caused the incorrect target database to be selected when restoring Event-Driven Ansible from a backup (AAP-18151)</p>
+</li>
+<li>
+<p>Postgres tasks which create users in FIPS environments now use <code>scram-sha-256</code> (AAP-17516)</p>
+</li>
+<li>
+<p>All Event-Driven Ansible services are enabled after installation is complete (AAP-17426)</p>
+</li>
+<li>
+<p>Ensure all backup and restore staged files and directories are cleaned up before running a backup or restore. You must also mark the files for deletion after a backup or restore (AAP-16101)</p>
+</li>
+<li>
+<p>Updated nginx to 1.22 (AAP-15962)</p>
+</li>
+<li>
+<p>Added a task to VMs that will run the <code>awx-manage</code> command to pre-create events table partitions before executing <code>pg_dump</code> and added a variable for the default number of hours to pre-create (AAP-15920)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_event_driven_ansible_3">Event-Driven Ansible</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed the automation controller URL check when installing Event-Driven Ansible without controller (AAP-18169)</p>
+</li>
+<li>
+<p>Added a separate worker queue for Event-Driven Ansible activations to not interfere with application tasks such as project updates (AAP-14743)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_related_rpm_and_container_releases_for_bundle_installer_3">Related RPM and container releases for bundle installer</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/errata/RHSA-2023:7517">RHSA-2023:7517</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:7460">RHBA-2023:7460</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:6853">RHBA-2023:6853</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:6302">RHBA-2023:6302</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:7462">RHBA-2023:7462</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="installer-24-2">RHBA-2023:5347 - installer release 2.4-2 - September 25, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:5347">RHBA-2023:5347</a></p>
+</div>
+<div class="sect4">
+<h5 id="_general_3">General</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>The installer will now properly generate a new <code>SECRET_KEY</code> for controller when running <code>setup.sh</code> with the <code>-k</code> option (AAP-15565)</p>
+</li>
+<li>
+<p>Added temporary file cleanup for Podman to prevent <code>cannot re-exec process</code> error during job execution (AAP-15248)</p>
+</li>
+<li>
+<p>Added new variables for additional nginx configurations per component (AAP-15124)</p>
+</li>
+<li>
+<p>The installer now correctly enforces only 1 Event-Driven Ansible host per Ansible Automation Platform installation (AAP-15122)</p>
+</li>
+<li>
+<p>You are now able to sync execution environment images in automation hub to automation controller on upgrade (AAP-15121)</p>
+</li>
+<li>
+<p><strong>awx</strong> user configuration now supports rootless Podman (AAP-15072)</p>
+</li>
+<li>
+<p>You can now mount the <code>/var/lib/awx</code> directory as a separate filesystem on execution nodes (AAP-15065)</p>
+</li>
+<li>
+<p>Fixed the linger configuration for an Event-Driven Ansible user (AAP-14745)</p>
+</li>
+<li>
+<p>Fixed the values used for signing installer managed certificates for internal postgres installations (AAP-14236)</p>
+</li>
+<li>
+<p>Subject alt names for component hosts will now only be checked for signing certificates when https is enabled (AAP-14235)</p>
+</li>
+<li>
+<p>Fixed postgres sslmode for <code>verify-full</code> that affected external postgres and postgres signed for 127.0.0.1 for internally managed postgres (AAP-13962)</p>
+</li>
+<li>
+<p>Updated the inventory file to include SSL key and cert parameters for provided SSL web certificates (AAP-13854)</p>
+</li>
+<li>
+<p>Fixed an issue with the <code>awx-rsyslogd</code> process where it starts with the wrong user (AAP-13664)</p>
+</li>
+<li>
+<p>Fixed an issue where the restore process failed to stop <code>pulpcore-worker</code> services on RHEL 9 (AAP-13297)</p>
+</li>
+<li>
+<p>Podman configurations are now correctly aligned to the Event-Driven Ansible home directory (AAP-13289)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_related_rpm_and_container_releases_for_bundle_installer_4">Related RPM and container releases for bundle installer</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://access.redhat.com/errata/RHSA-2023:5208">RHSA-2023:5208</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:5271">RHBA-2023:5271</a></p>
+</li>
+<li>
+<p><a href="https://access.redhat.com/errata/RHBA-2023:5316">RHBA-2023:5316</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bundle_installer_releases">Bundle installer releases</h3>
+<div class="sect3">
+<h4 id="_rhba_20236831_bundle_installer_release_2_4_2_4_november_08_2023">RHBA-2023:6831 - bundle installer release 2.4-2.4 - November 08, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:6831">RHBA-2023:6831</a></p>
+</div>
+<div class="sect4">
+<h5 id="_general_4">General</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>python3-urllib3/python39-urllib3: Cookie request header is not stripped during cross-origin redirects (<a href="https://access.redhat.com/security/cve/cve-2023-43804">CVE-2023-43804</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_automation_controller_2">Automation controller</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>automation-controller: Django: Denial-of-service possibility in django.utils.text.Truncator (<a href="https://access.redhat.com/security/cve/cve-2023-43665">CVE-2023-43665</a>)</p>
+</li>
+<li>
+<p>Customers using the <code>infra.controller_configuration</code> collection (which uses <code>ansible.controller</code> collection) to update their Ansible Automation Platform environment no longer receive an HTTP 499 response (AAP-17422)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rhba_20235886_bundle_installer_release_2_4_2_3_october_19_2023">RHBA-2023:5886 - bundle installer release 2.4-2.3 - October 19, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:5886">RHBA-2023:5886</a></p>
+</div>
+<div class="sect4">
+<h5 id="_general_5">General</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>receptor: golang: net/http, x/net/http2: rapid stream resets can cause excessive work (CVE-2023-44487) (<a href="https://access.redhat.com/security/cve/CVE-2023-39325">CVE-2023-39325</a>)</p>
+</li>
+<li>
+<p>receptor: golang: crypto/tls: slow verification of certificate chains containing large RSA keys (<a href="https://access.redhat.com/security/cve/CVE-2023-29409">CVE-2023-29409</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_automation_controller_3">Automation controller</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>receptor: HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack) (<a href="https://access.redhat.com/security/cve/CVE-2023-44487">CVE-2023-44487</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rhba_20235812_bundle_installer_release_2_4_2_2_october_17_2023">RHBA-2023:5812 - bundle installer release 2.4-2.2 - October 17, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:5812">RHBA-2023:5812</a></p>
+</div>
+<div class="sect4">
+<h5 id="_general_6">General</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>ansible-core: malicious role archive can cause ansible-galaxy to overwrite arbitrary files (<a href="https://access.redhat.com/security/cve/CVE-2023-5115">CVE-2023-5115</a>)</p>
+</li>
+<li>
+<p>python3-django/python39-django: Denial-of-service possibility in django.utils.text.Truncator (<a href="https://access.redhat.com/security/cve/cve-2023-43665">CVE-2023-43665</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_automation_controller_4">Automation controller</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Added a new <strong>Subscription Usage</strong> page to the controller UI to view historical usage of licenses (AAP-16983)</p>
+</li>
+<li>
+<p>automation-controller: Django: Potential denial of service vulnerability in django.utils.encoding.uri_to_iri() (<a href="https://access.redhat.com/security/cve/CVE-2023-41164">CVE-2023-41164</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rhba_20235653_bundle_installer_release_2_4_2_1_october_10_2023">RHBA-2023:5653 - bundle installer release 2.4-2.1 - October 10, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:5653">RHBA-2023:5653</a></p>
+</div>
+<div class="sect4">
+<h5 id="_general_7">General</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated ansible-lint to include an offline mode, which is enabled by default, to prevent outbound network calls (AAH-2606)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_automation_controller_5">Automation controller</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed settings lookup to no longer leave some services in a <code>supervisord</code> <code>FATAL</code> unresponsive state (AAP-16460)</p>
+</li>
+<li>
+<p>Replaced the SQL commands for creating a partition with the use of <code>ATTACH PARTITION</code> to avoid exclusive table lock on event tables (AAP-16350)</p>
+</li>
+<li>
+<p>Fixed settings to allow simultaneous use of <code>SOCIAL_AUTH_SAML_ORGANIZATION_ATTR</code> and <code>SOCIAL_AUTH_SAML_ORGANIZATION_MAP</code> for a given organization (AAP-16183)</p>
+</li>
+<li>
+<p>Fixed Content Security Policy (CSP) to enable Pendo retrieval (AAP-16057)</p>
+</li>
+<li>
+<p>Updated the Thycotic DevOps Secrets Vault credential plugin to allow for filtering based on <code>secret_field</code> (AAP-15695)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rhba_20235140_bundle_installer_release_2_4_1_4_september_12_2023">RHBA-2023:5140 - bundle installer release 2.4-1.4 - September 12, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:5140">RHBA-2023:5140</a></p>
+</div>
+<div class="sect4">
+<h5 id="_automation_controller_6">Automation controller</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed a bug that caused a deadlock on shutdown when Redis was unavailable (AAP-14203)</p>
+</li>
+<li>
+<p>The login form no longer supports autocomplete on the password field due to security concerns (AAP-15545)</p>
+</li>
+<li>
+<p>automation-controller: cryptography: memory corruption via immutable objects (<a href="https://access.redhat.com/security/cve/CVE-2023-23931">CVE-2023-23931</a>)</p>
+</li>
+<li>
+<p>automation-controller: GitPython: Insecure non-multi options in clone and clone_from is not blocked (<a href="https://access.redhat.com/security/cve/CVE-2023-40267">CVE-2023-40267</a>)</p>
+</li>
+<li>
+<p>python3-gitpython/python39-gitpython: Insecure non-multi options in clone and clone_from is not blocked (<a href="https://access.redhat.com/security/cve/CVE-2023-40267">CVE-2023-40267</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rhba_20234782_bundle_installer_release_2_4_1_3_august_28_2023">RHBA-2023:4782 - bundle installer release 2.4-1.3 - August 28, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:4782">RHBA-2023:4782</a></p>
+</div>
+<div class="sect4">
+<h5 id="_automation_controller_7">Automation controller</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>automation-controller: python-django: Potential regular expression denial of service vulnerability in EmailValidator/URLValidator (<a href="https://access.redhat.com/security/cve/CVE-2023-36053">CVE-2023-36053</a>)</p>
+</li>
+<li>
+<p>automation-controller: python-django: Potential denial-of-service vulnerability in file uploads (<a href="https://access.redhat.com/security/cve/CVE-2023-24580">CVE-2023-24580</a>)</p>
+</li>
+<li>
+<p>Changing credential types by using the drop-down list in the <strong>Launch prompt</strong> window no longer causes the screen to disappear (AAP-11444)</p>
+</li>
+<li>
+<p>Upgraded python dependencies which include upgrades from Django 3.2 to 4.2.3, psycopg2 to psycopg3, and additional libraries as needed. Also added a new setting in the UI exposing the <code>CSRF_TRUSTED_ORIGIN</code> settings (AAP-12345)</p>
+</li>
+<li>
+<p>Fixed slow database UPDATE statements on the job events table which could cause a task manager timeout (AAP-12586)</p>
+</li>
+<li>
+<p>Fixed an issue where adding a new label to a job through the <strong>Prompt On Launch</strong> option would not add the label to the job details (AAP-14204)</p>
+</li>
+<li>
+<p>Added <code>noopener</code> and <code>noreferrer</code> attributes to controller UI links that were missing these attributes (AAP-14345)</p>
+</li>
+<li>
+<p>Fixed the broken <strong>User Guide</strong> link in the <strong>Edit Subscription Details</strong> page (AAP-14375)</p>
+</li>
+<li>
+<p>Turned off auto-complete on the remaining controller UI forms that were missing that attribute (AAP-14442)</p>
+</li>
+<li>
+<p>The <strong>Add</strong> button on the credentials page is now accessible for users with the correct permissions (AAP-14525)</p>
+</li>
+<li>
+<p>Fixed an unexpected error that occurred when adding a new host while using a manifest with size 10 (AAP-14675)</p>
+</li>
+<li>
+<p>Applied environment variables from the <code>AWX_TASK_ENV</code> setting when running credential lookup plugins (AAP-14683)</p>
+</li>
+<li>
+<p>Interrupted jobs (such as canceled jobs) no longer clear facts from hosts if the job ran on an execution node (AAP-14878)</p>
+</li>
+<li>
+<p>Using a license that is missing a <code>usage</code> attribute no longer returns a 400 error (AAP-14880)</p>
+</li>
+<li>
+<p>Fixed sub-keys under <code>data</code> from HashiCorp Vault Secret Lookup responses to check for secrets, if found (AAP-14946)</p>
+</li>
+<li>
+<p>Fixed Ansible facts to retry saving to hosts if there is a database deadlock (AAP-15021)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_event_driven_ansible_4">Event-Driven Ansible</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>automation-eda-controller: token exposed at importing project (<a href="https://access.redhat.com/security/cve/CVE-2023-4380">CVE-2023-4380</a>)</p>
+</li>
+<li>
+<p>python3-cryptography/python39-cryptography: memory corruption via immutable objects (<a href="https://access.redhat.com/security/cve/CVE-2023-23931">CVE-2023-23931</a>)</p>
+</li>
+<li>
+<p>python3-requests/python39-requests: Unintended leak of Proxy-Authorization header (<a href="https://access.redhat.com/security/cve/CVE-2023-32681">CVE-2023-32681</a>)</p>
+</li>
+<li>
+<p>Contributor and editor roles now have permissions to access users and set the AWX token (AAP-11573)</p>
+</li>
+<li>
+<p>The onboarding wizard now requests controller token creation (AAP-11907)</p>
+</li>
+<li>
+<p>Corrected the filtering capability of the <strong>Rule Audit</strong> screens so that a search yields results with the <code>starts with</code> function (AAP-11987)</p>
+</li>
+<li>
+<p>Enabling or disabling rulebook activation no longer increases the restarts counter by 1 (AAP-12042)</p>
+</li>
+<li>
+<p>Filtering by a text string now displays all applicable items in the UI, including those that are not visible in the list at that time (AAP-12446)</p>
+</li>
+<li>
+<p>Audit records are no longer missing when running activations with multiple jobs (AAP-12522)</p>
+</li>
+<li>
+<p>The event payload is no longer missing key attributes when a job template fails (AAP-12529)</p>
+</li>
+<li>
+<p>Fixed the Git token leak that occurs when importing a project fails (AAP-12767)</p>
+</li>
+<li>
+<p>The restart policy in Kubernetes (k8s) now restarts a successful activation that is incorrectly marked as failed (AAP-12862)</p>
+</li>
+<li>
+<p>Activation statuses are now reported correctly, whether you are disabling or enabling them (AAP-12896)</p>
+</li>
+<li>
+<p>When the <code>run_job_template</code> action fails, ansible-rulebook prints an error log in the activation output and creates an entry in rule audit so the user is alerted that the rule has failed (AAP-12909)</p>
+</li>
+<li>
+<p>When a user tries to bulk delete rulebook activations from the list, the request now completes successfully and consistently (AAP-13093)</p>
+</li>
+<li>
+<p>The <strong>Rulebook Activation</strong> link now functions correctly in the <strong>Rule Audit Detail</strong> UI (AAP-13182)</p>
+</li>
+<li>
+<p>The ansible-rulebook now only connects to the controller if the rulebook being processed has a <code>run_job_template</code> action.(AAP-13209)</p>
+</li>
+<li>
+<p>Fixed a bug where some audit rule records had the wrong rulebook link (AAP-13844)</p>
+</li>
+<li>
+<p>Fixed a bug where only the first 10 audit rules had the right link (AAP-13845)</p>
+</li>
+<li>
+<p>Before this update, project credentials could not be updated if there was a change to the credential used in the project. With this update credentials can be updated in a project with a new or different credential (AAP-13983)</p>
+</li>
+<li>
+<p>The <strong>User Access</strong> section of the navigation panel no longer disappears after creating a decision environment (AAP-14273)</p>
+</li>
+<li>
+<p>Fixed a bug where filtering for audit rules did not work properly on OpenShift Container Platform (AAP-14512)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rhba_20234621_bundle_installer_release_2_4_1_2_august_10_2023">RHBA-2023:4621 - bundle installer release 2.4-1.2 - August 10, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:4621">RHBA-2023:4621</a></p>
+</div>
+<div class="sect4">
+<h5 id="_automation_controller_8">Automation controller</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>automation controller: Html injection in custom login info (<a href="https://access.redhat.com/security/cve/CVE-2023-3971">CVE-2023-3971</a>)</p>
+</li>
+<li>
+<p>Organization admin users are no longer shown an error on the Instances list (AAP-11195)</p>
+</li>
+<li>
+<p>Fixed the workflow job within the workflow approval to display the correct details (AAP-11433)</p>
+</li>
+<li>
+<p>Credential name search in the ad hoc commands prompt no longer requires case-sensitive input (AAP-11442)</p>
+</li>
+<li>
+<p>The <strong>Back to list</strong> button in the controller UI now maintains previous search filters (AAP-11527)</p>
+</li>
+<li>
+<p><strong>Topology view</strong> and <strong>Instances</strong> are only available as sidebar menu options to System Administrators and System Auditors (AAP-11585)</p>
+</li>
+<li>
+<p>Fixed the frequency of the scheduler to run on the correct day of the week as specified by the user (AAP-11776)</p>
+</li>
+<li>
+<p>Fixed an issue with slow database UPDATE statements when using nested tasks (include_tasks) causing task manager timeout (AAP-12586)</p>
+</li>
+<li>
+<p>Added the ability to add execution and hop nodes to VM-based controller installations from the UI (AAP-12849)</p>
+</li>
+<li>
+<p>Added the <code>awx-manage</code> command for creating future events table partitions (AAP-12907)</p>
+</li>
+<li>
+<p>Re-enabled Pendo support by providing the correct Pendo API key (AAP-13415)</p>
+</li>
+<li>
+<p>Added the ability to filter teams by using partial names in the dialog for granting teams access to a resource (AAP-13557)</p>
+</li>
+<li>
+<p>Fixed a bug where a weekly rrule string without a BYDAY value would result in the UI throwing a TypeError (AAP-13670)</p>
+</li>
+<li>
+<p>Fixed a server error that happened when deleting workflow jobs ran before event partitioning migration (AAP-13806)</p>
+</li>
+<li>
+<p>Added API reference documentation for the new bulk API endpoint (AAP-13980)</p>
+</li>
+<li>
+<p>Fixed an issue where related items were not visible in some cases. For example, job template instance groups, organization galaxy credentials, and organization instance groups (AAP-14057)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rhba_20234288_bundle_installer_release_2_4_1_1_july_26_2023">RHBA-2023:4288 - bundle installer release 2.4-1.1 - July 26, 2023</h4>
+<div class="paragraph">
+<p><a href="https://access.redhat.com/errata/RHBA-2023:4288">RHBA-2023:4288</a></p>
+</div>
+<div class="sect4">
+<h5 id="_automation_hub_3">Automation hub</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed issue using gpg key with passphrase for signing services (AAH-2445)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-03-04 15:47:29 UTC
+</div>
+</div>
+</body>
+</html>

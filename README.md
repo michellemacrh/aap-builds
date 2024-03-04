@@ -5,3 +5,4 @@ Add HTML files to subdirectories within the `docs/` directory in the `gh-pages` 
 The files are published here:
 
 * https://michellemacrh.github.io/aap-builds/dev-guide-main-2024-02-27.html
+* https://michellemacrh.github.io/aap-builds/release-notes-AAP-21251-2024-03-04.html
